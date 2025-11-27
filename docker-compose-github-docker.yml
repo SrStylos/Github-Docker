@@ -1,0 +1,25 @@
+version: '3.8'
+
+name: github-docker-franchuu
+
+services:
+  srstylos-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: franchuu/github-docker-srstylos:latest
+    container_name: github-docker-franchuu
+    ports:
+      - "8080:8080"
+    environment:
+      - PROJECT_NAME=Github-Docker
+      - PROJECT_OWNER=franchuu
+      - APP_NAME=SrStylos Store
+      - APP_VERSION=2.0
+    restart: unless-stopped
+    volumes:
+      - app-logs-franchuu:/app-github-docker/logs
+
+volumes:
+  app-logs-franchuu:
+    name: logs-github-docker-franchuu
